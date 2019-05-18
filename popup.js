@@ -65,13 +65,13 @@ function switchModeTo(currentMode,toEnv,url){
     return url
   }
   else if(currentMode =='publish' && toEnv =='author'){
-    let y = url.slice(0, url.indexOf('informa-stage62'))
+    let y = url.slice(0, url.indexOf('informa-'))
     let url2 = url.replace(y,y+'author-')
     let x = url2.slice(0, url2.indexOf('content'))
     return url2.replace(x,x+'editor.html/')
   }
   else if(currentMode =='publish' && toEnv =='viewPublish'){
-    let y = url.slice(0, url.indexOf('informa-stage62'))
+    let y = url.slice(0, url.indexOf('informa-'))
     return url.replace(y,y+'author-') + '?wcmmode=disabled'
   }
 }
