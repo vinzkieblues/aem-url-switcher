@@ -2,6 +2,9 @@
   <html>
     <head>
       <style>
+        .hidden{
+          display:none !important;
+        }
         .mode-switcher{
           width:200px;
           padding:15px;
@@ -48,7 +51,19 @@
           color:#ffffff;
           background:#333333;
           transition: ease 300ms all;
-
+        }
+        .mode-switcher li button.site-admin{
+          background:none;
+          color:#fb7800;
+          text-align:left;
+          padding:0;
+          margin:10px 0;
+        }
+        .mode-switcher li button.site-admin:hover{
+          background:none;
+          color:#fb7800;
+          text-align:left; 
+          text-decoration:underline;         
         }
         .mode-switcher li button:hover{
           transition: ease 300ms all;
@@ -58,6 +73,12 @@
         .mode-switcher li button:hover{
           background: #fb7800;
           color: #ffffff;
+        }
+        .mode-switcher li button.disabled{
+          cursor:not-allowed;          
+        }        
+        .mode-switcher li button.disabled:hover{
+          background:#333333;
         }
         .mode-switcher.qa li button.active,
         .mode-switcher.qa li button:hover{
@@ -83,8 +104,9 @@
           </div>
           <ul>
             <li><button class="switch-btn" id="author" value="author">Author mode</button></li>
-            <li><button class="switch-btn" id="viewPublish" value="viewPublish">View as Publish mode</button></li>
-            <li><button class="switch-btn" id="publish" value="publish">Publish mode</button></li>
+            <li><button class="switch-btn" id="viewPublish" value="viewPublish">View as Published mode</button></li>
+            <li><button class="switch-btn" id="publish" value="publish">Published mode</button></li>
+            <li><button class="switch-btn site-admin" id="siteAdmin" value="siteAdmin">View Site admin</button></li>
           </ul>
         </div>
         <script src="popup.js"></script>
