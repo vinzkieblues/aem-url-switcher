@@ -4,6 +4,7 @@ Date Created: May 16 2019
 */
 const switchBtns = [].slice.call(document.getElementsByClassName('switch-btn'))
 const tabBtn = document.getElementById("newTabBtn");
+let chkboxState = '';
 
 switchBtns.forEach((element, index) => {
   element.addEventListener('click', (env) => {
@@ -23,12 +24,13 @@ switchBtns.forEach((element, index) => {
 })
 
 function onWindowLoad(){
-  let currentUrl = ''  
+  let currentUrl = ''
+
   removeActive(switchBtns)
   chrome.tabs.query({active: true, currentWindow: true}, function(tab) {
     currentUrl = checkUrl(tab[0].url)    
     switchBtns.forEach((element, index) => {
-      if(currentUrl =='siteAdmin'){
+      if(currentUrl == 'siteAdmin'){
         element.classList.add("disabled")
         element.disabled = true
         if(element.value == currentUrl){
@@ -41,6 +43,85 @@ function onWindowLoad(){
         }
       }
     })
+  })
+
+  // check local storage for checkbox state
+  if(tabBtn.checked){
+    console.log('Checkbox is checked...');
+  }
+  else{
+    console.log('Checkbox is unchecked...');
+    getFromStorage();
+  }
+
+  tabBtn.addEventListener('click', function(){
+    if(this.checked){
+      console.log('Checkbox is checked...');
+      saveToStorage();
+    }
+    else {
+      clearLocalStorage();
+    }
+  })
+}
+
+function saveToStorage() {
+  chrome.storage.local.set({
+    'checkbox_state' : 'checked'
+  }, function() {
+    let error = chrome.runtime.lastError;
+    
+    if(error) {
+      console.error(error);
+    }
+    else{
+      console.log('The checkbox state was saved to local storage...')
+    }
+  })
+}
+function getFromStorage() {
+  chrome.storage.local.get(['checkbox_state'], function(data){
+    let error = chrome.runtime.lastError;
+
+    if(error) {
+      console.error(error);
+    }
+    else{
+      if(typeof data.checkbox_state === 'undefined'){
+        console.log('No checkbox state in local storage.');
+      }
+      else{
+        chkboxState = data.checkbox_state;
+        if(chkboxState === 'checked') {
+          tabBtn.click();
+        }
+        console.log('Checkbox state is... ' + data.checkbox_state);
+      }
+    }
+  })
+}
+function removeFromStorage() {
+  chrome.storage.local.remove(['checkbox_state'], function(){
+    let error = chrome.runtime.lastError;
+
+    if(error) {
+      console.error(error);
+    }
+    else{
+      console.log('The key was removed from local storage');
+    }
+  })
+}
+function clearLocalStorage() {
+  chrome.storage.local.clear(function(){
+    let error = chrome.runtime.lastError;
+
+    if(error) {
+      console.error(error);
+    }
+    else{
+      console.log('Local storage purged.');
+    }
   })
 }
 
