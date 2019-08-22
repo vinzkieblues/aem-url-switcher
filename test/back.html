@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <link href="css/semantic.min.css" rel="stylesheet">
+      <link href="css/main.css" rel="stylesheet">
+      <script src="js/vendor/modernizr-2.8.3.min.js"></script>    
+    </head>
+    <body>
+      
+      <div style="max-width:450px; padding:30px">      
+        <div class="ui menu small basic icon buttons right floated ">
+          <a id="siteAdmin" value="siteAdmin" class="ui button tools-btn" data-tooltip="Admin Touch UI" data-position="bottom left"><i class="edit outline green icon"></i></a>
+          <a id="damBtn" class="ui button tools-btn" data-tooltip="DAM" data-position="bottom left"><i class="image outline teal icon"></i></a>
+          <a id="crxBtn" class="ui button tools-btn" data-tooltip="CRX" data-position="bottom left"><i class="css3 outline blue icon"></i></a> 
+          <a id="miscAdminBtn" class="ui button tools-btn" data-tooltip="Misc Admin" data-position="bottom right"><i class="wrench violet icon"></i></a>
+          <a id="classicAdminBtn" class="ui button tools-btn" data-tooltip="Admin Classic UI" data-position="bottom right"><i class="folder outline purple icon"></i></a>                
+        </div>           
+
+        <br>        
+        <br>        
+        <div class="ui form">            
+          <div class="mode-switcher">    
+            <div class="new-tab">
+              <input name="new-tab" id="newTabBtn" type="checkbox"/>
+              <label for="new-tab">Open in new tab</label>
+            </div>        
+          </div>          
+          <p><strong>Open in</strong></p>
+          <div class="inline fields ui message">            
+            <div class="field">
+                <div class="ui radio checkbox">
+                  <input type="radio" name="tab" value="Same Tab" checked="" tabindex="0" class="hidden">
+                  <label>Same Tab</label>
+                </div>
+              </div>
+            <div class="field">
+              <div class="ui radio checkbox">
+                <input type="radio" name="tab" value="New Tab" tabindex="0" class="hidden">
+                <label>New Tab</label>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui radio checkbox">
+                <input type="radio" name="tab" value="New Window" tabindex="0" class="hidden">
+                <label>New Window</label>
+              </div>
+            </div>                       
+          </div> 
+          <p><strong>Environment</strong></p>         
+          <div class="environment" data-content="This will only work if the website exist on the other environment. Otherwise, it will show a 'No Resource Found page'." data-position="top left">
+            <div class="inline fields ui message">            
+              <div class="field">
+                <div class="ui radio checkbox">
+                  <input type="radio" name="environment" value="Stage" checked="" tabindex="0" class="hidden">
+                  <label>Staging</label>
+                </div>
+              </div>
+              <div class="field">
+                <div class="ui radio checkbox">
+                  <input type="radio" name="environment" value="QA" tabindex="0" class="hidden" >
+                  <label>QA</label>
+                </div>
+              </div>
+              <div class="field">
+                <div class="ui radio checkbox">
+                  <input type="radio" name="environment" value="Prod" tabindex="0" class="hidden">
+                  <label>Production</label>
+                </div>
+              </div>            
+            </div>  
+          </div>                    
+        </div>          
+
+        <button class="ui teal button switch-btn" id="author" value="author">Author</button>
+        <button class="ui blue button switch-btn" id="viewPublish" value="viewPublish">View as Published</button>
+        <button class="ui violet button switch-btn" id="publish" value="publish">Published</button>    
+           
+        <div class="three ui buttons"></div>
+        <a class="ui right labeled icon button positive fluid" id="liveButton">
+          <i class="right arrow icon"></i>
+          Live Link
+        </a>
+      </div>
+            
+      <script src="js/vendor/jquery-1.11.2.min.js"></script>
+      <script src="js/vendor/semantic.min.js"></script>       
+      <script src="js/main.js"></script>  
+      <script src="js/popup.js"></script>
+        
+    </body>
+  </html>

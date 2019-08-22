@@ -1,0 +1,18 @@
+{
+  "name": "AEM Link Switcher",
+  "version": "1.0",
+    "description": "Switch AEM URL to Author, View as Published and Published mode.",
+    "permissions": ["activeTab","tabs","declarativeContent","storage"],
+    "background": {
+      "scripts": ["js/background.js"],
+      "persistent": false
+    },
+    "page_action": {
+      "default_popup": "popup.html"
+    },
+    "icons": { "16": "img/icon16.png",
+           "48": "img/icon48.png",
+          "128": "img/icon128.png"
+    },
+    "manifest_version": 2
+}
